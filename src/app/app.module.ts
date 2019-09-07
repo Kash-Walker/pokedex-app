@@ -1,8 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+
+/**
+ * The HTTP service is not added by default
+ * so we need to import it.
+ */
+import { HttpClientModule } from '@angular/common/http';
+
+/**
+ * Import the PokedexService
+ */
+import { PokedexAppService } from './pokedex-app.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +21,21 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    CommonModule,
+    FormsModule,
+    /**
+     * Register the HTTP service.
+     */
+    HttpModule
   ],
-  providers: [],
+  /**
+   * Register the service as a
+   * provider.
+   */
+  providers: [PokedexAppService],
+  entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
